@@ -3,7 +3,7 @@
 {% block title %} Applications - {{job.title}} - {{job.company}} {% endblock %}
 
 {% block content %}
-<h2>Applications for {{job.title}} at {{job.company}}</h2>
+<h2>Applications for {{job.title}} at <a href="/employer/profile?id={{job.company.id}}">{{job.company}} </a></h2>
 {% if applications %}
 <table>
     <tr>
@@ -13,7 +13,7 @@
     </tr>
     {% for app in applications %}
     <tr>
-        <td> {{app.candidate.name}} </td>
+        <td> <a href="/user/profile?id={{app.candidate.id}}"> {{app.candidate.name}} </a> </td>
         <td> {{app.description}} </td>
         <td> {{app.status}} </td>
     </tr>

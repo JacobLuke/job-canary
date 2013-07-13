@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from jobcan.forms import RegisterForm
-import oauth2 as oauth
 import urlparse 
 
 def getUser(request):

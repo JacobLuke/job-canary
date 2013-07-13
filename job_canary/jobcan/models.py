@@ -1,11 +1,12 @@
 from django.db import models
 
 def content_file_name(instance, filename):
-    return '/'.join(['content', instance.name, filename])
+  return '/'.join(['content', instance.name, filename])
 
 class Company(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
+  email_addr = models.CharField(max_length=100)
 
 class Cycle(models.Model):
   name = models.CharField(max_length=200)
@@ -23,8 +24,9 @@ class Candidate(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
   resume  = models.FileField(upload_to=content_file_name, blank=True, null=True)
-  linkedindata = models.CharField(max_length=5000)
+  linkedindata = models.CharField(max_length=5000, blank=True, null=True)
   company = models.ForeignKey(Company, blank=True, null=True)
+  email_addr = models.CharField(max_length=100)
   
 class Application(models.Model):
   description = models.CharField(max_length=1000)

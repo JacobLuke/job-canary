@@ -1,4 +1,5 @@
 from django import forms
+import jobcan.models
 
 class RegisterForm(forms.Form):
     name = forms.CharField(max_length=5000)
@@ -21,9 +22,19 @@ class OwnerRegisterForm(forms.Form):
 
 class ApplicationForm(forms.Form):
     description = forms.CharField(max_length=5000)
-    
-class JobForm(forms.Form):
-    description = forms.CharField(max_length=5000)
-    title = forms.CharField(max_length=5000)
-    
+    def __init__ (self, *args, **kw):
+        super(ApplicationForm, self).__init__(*args, **kw)
+        self.fields['job'] = forms.ModelChoiceField(queryset=jobcan.models.Job.objects)
 
+class JobForm(forms.Form):
+    title = forms.CharField(max_length=5000)
+    description = forms.CharField(max_length=5000)
+    def __init__ (self, *a, **k):
+        super(JobForm, self).__init__(*a,**k)
+        self.fields['cycle'] = forms.ModelChoiceField(queryset=jobcan.models.Cycle.objects)
+
+class CycleRegistration(forms.Form):
+    name = forms.CharField(max_length=500)
+    start_date = forms.SplitDateTimeField()
+    end_date = forms.SplitDateTimeField()
+    candidates = forms.ModelMultipleChoiceField(queryset=jobcan.models.Candidate.objects)

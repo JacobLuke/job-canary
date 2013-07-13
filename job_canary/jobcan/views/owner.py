@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from jobcan.models import Owner
-from jobcan.forms import OwnerRegisterForm
+from jobcan.forms import OwnerRegisterForm, CycleRegistration
 
 def getOwner(request):
     return get_object_or_404(Owner, pk=request.GET['id'])
@@ -19,8 +19,8 @@ def register(request):
 		print form
 		if form.is_valid():
 			owner = Owner(name=request.POST['name'],
-                               email_address=request.POST['email_address']
-                               )
+                          email_address=request.POST['email_address']
+                          )
 			owner.save()
 			return HttpResponseRedirect('/owner/profile?id=%d' % owner.id)
 	else:
@@ -29,10 +29,22 @@ def register(request):
 	return render(request, 'owner/register.html', context)
 
 def create(request):
-    '''
-    Lets a job center create a cycle
-    '''
-    pass
+	print request
+	context = {}
+	if request.method == 'POST':
+		form = CycleRegistration(request.POST, request.FILES)
+		print form
+		if form.is_valid():
+			owner = Owner(name=request.POST['name'],
+                          email_address=request.POST['email_address']
+                          )
+			owner.save()
+			return HttpResponseRedirect('/owner/profile?id=%d' % owner.id)
+	else:
+		form = CycleRegistration()
+	context['form'] = form
+	return render(request, 'owner/create.html', context)
+
 
 def cycles(request):
     '''

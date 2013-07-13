@@ -6,6 +6,8 @@ def content_file_name(instance, filename):
 class Company(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
+  def __str__ (self):
+    return self.name
 
 class Cycle(models.Model):
   name = models.CharField(max_length=200)
@@ -20,6 +22,8 @@ class Job(models.Model):
   company = models.ForeignKey(Company)
   title = models.CharField(max_length=300)
   description = models.CharField(max_length=1000)
+  def __str__ (self):
+    return "\"{0}\" at {1} ({2})".format(self.title, self.company, self.cycle)
 
 class Candidate(models.Model):
   description = models.CharField(max_length=1000)

@@ -11,6 +11,7 @@
         <th>Job Title</th>
         <th>Description</th>
     </tr>
+    </thead>
     {% for job in jobs %}
     <tr>
         <td> <a href="/jobs/applications?id={{job.id}}"> {{job.title}} </a> </td>

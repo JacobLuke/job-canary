@@ -1,1 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} Jobs - {{company.name}} {% endblock %}
+
+{% block content %}
+{% if jobs %}
+<table>
+    <tr>
+        <th>Job Title</th>
+        <th>Description</th>
+    </tr>
+    {% for jo in jobs %}
+    <tr>
+        <td> {{jo.title}} </td>
+        <td> {{jo.description}} </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<div class="container">
+    No active jobs
+</div>
+{% endif %}
+{% endblock %}
 

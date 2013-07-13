@@ -19,14 +19,15 @@ def jobs(request):
     except:pass
     print jobs
     return render(request, "employer/jobs.html", context)
-"""
+
 def applications(request):
     context = {}
     company = getCompany(request)
     context['company'] = company
     try:
-        applications = get_list_or_404(Application, job.company=company)
+	jobs = get_list_or_404(Job, company=company)
+        applications = get_list_or_404(Application, job__in=jobs)
         context['applications'] = applications
     except:pass
     print applications
-    return render(request, "employer/applications.html", context)"""
+    return render(request, "employer/applications.html", context)

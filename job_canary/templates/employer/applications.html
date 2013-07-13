@@ -1,1 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Applications - {{company.name}} {% endblock %}
+
+{% block content %}
+{% if applications %}
+<table>
+    <tr>
+        <th>Job Title</th>
+        <th>Description</th>
+        <th>Applicant</th>
+    </tr>
+    {% for app in applications %}
+    <tr>
+        <td> {{app.job.title}} </td>
+        <td> {{app.job.description}} </td>
+        <td> {{app.candidate.name}} </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<div class="container">
+    No active applications
+</div>
+{% endif %}
+{% endblock %}
+
 

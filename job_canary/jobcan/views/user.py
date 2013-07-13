@@ -65,7 +65,7 @@ def application(request):
 			application.save()
 			return HttpResponseRedirect('/user/profile?id=%d' % user.id)
 	else:
-		form = RegisterForm()
+		form = ApplicationForm()
 	context['form'] = form
 	context['user'] = user
 	context['job'] = job

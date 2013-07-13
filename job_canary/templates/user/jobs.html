@@ -11,8 +11,8 @@
         <th>Company</th>
         <th>Description</th>
         <th>Status</th>
-    {% for app in applications %}
     </tr>
+    {% for app in applications %}
     <tr>
         <td> {{app.name}} </td>
         <td> {{app.job.company.name}} </td>

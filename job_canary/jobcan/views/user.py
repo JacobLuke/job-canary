@@ -11,9 +11,6 @@ import urlparse
 def getUser(request):
     return get_object_or_404(Candidate, pk=request.GET['id'])
 
-consumer_key           = "CONSUMER_KEY"
-consumer_secret        = "CONSUMER_SECRET"
-consumer = oauth.Consumer(consumer_key, consumer_secret)
 
 def profile(request):
     context = {'user' : getUser(request)}

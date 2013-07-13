@@ -1,6 +1,9 @@
 
 from django.shortcuts import get_object_or_404,get_list_or_404, render
-from jobcan.models import Candidate, Application, Company, Job
+from jobcan.models import Candidate, Application, Company, Job, Company
+from django.http import HttpResponseRedirect
+
+from jobcan.forms import EmployerRegisterForm, ApplicationForm
 
 def getCompany(request):
     return get_object_or_404(Company, pk=request.GET['id'])
@@ -31,3 +34,21 @@ def applications(request):
     except:pass
     print applications
     return render(request, "employer/applications.html", context)
+
+def register(request):
+	print request
+	context = {}
+	if request.method == 'POST':
+		form = EmployerRegisterForm(request.POST, request.FILES)
+		print form
+		if form.is_valid():
+			employer = Company(description=request.POST['description'],
+                                name=request.POST['name'],
+                                email_addr=request.POST['email_addr']
+                                  )
+			employer.save()
+			return HttpResponseRedirect('/employer/profile?id=%d' % employer.id)
+	else:
+		form = EmployerRegisterForm()
+	context['form'] = form
+	return render(request, 'employer/register.html', context)

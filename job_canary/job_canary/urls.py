@@ -6,6 +6,7 @@ import user.urls
 from django.conf.urls.static import static
 import employer.urls
 import jobs.urls
+import owner.urls
 
 def quick_render(file):
     return lambda response: render(response, file)
@@ -22,4 +23,5 @@ urlpatterns = patterns('',
 		url(r'^admin/', include(admin.site.urls)),
         url(r'^employer/', include(employer.urls)),
         url(r'^jobs/', include(jobs.urls)),
+        url(r'^owner/', include(owner.urls)),
 )

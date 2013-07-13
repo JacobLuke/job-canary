@@ -10,13 +10,20 @@ class Company(models.Model):
   def __str__ (self):
     return self.name
 
+class Owner(models.Model):
+    name = models.CharField(max_length=100)
+    email_address = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+
 class Cycle(models.Model):
+  owner = models.ForeignKey(Owner);
   name = models.CharField(max_length=200)
   description = models.CharField(max_length=1000)
   start_date = models.DateTimeField('start_date')
   end_date = models.DateTimeField('end_date')
   def __str__(self):
-    return "{0} [{1} - {2}]".format(self.name, self.start_date, self.end_date)
+    return "{0} ({3}) [{1} - {2}]".format(self.name, self.owner, self.start_date, self.end_date)
   
 class Job(models.Model):
   cycle = models.ForeignKey(Cycle, blank=True, null=True)

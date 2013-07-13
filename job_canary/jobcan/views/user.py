@@ -9,4 +9,4 @@ def profile(request):
         user = get_object_or_404(Candidate, pk=id)
         context["user"] = user
     except:raise
-    return render(request, '../../templates/user/profile.html', context)
+    return render(request, 'user/profile.html', context)

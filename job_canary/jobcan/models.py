@@ -32,7 +32,7 @@ class Candidate(models.Model):
   resume  = models.FileField(upload_to=content_file_name, blank=True, null=True)
   linkedindata = models.CharField(max_length=5000)
   company = models.ForeignKey(Company, blank=True, null=True)
-  
+  email_addr = models.CharField(max_length=100)
   def __str__(self):
         return self.name
 

@@ -3,5 +3,7 @@
 {% block content %}
         <h2>{{company.name}}</h2>
         <p>{{company.description}}</h2>
+	<a href="/employer/jobs?id={{company.id}}"> All Jobs </a>
+	<a href="/employer/applications?id={{company.id}}"> All Applications </a>
 {% endblock %}
  

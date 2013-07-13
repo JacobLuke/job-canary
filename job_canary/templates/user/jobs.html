@@ -4,6 +4,7 @@
 {% block title %} Jobs - {{user.name}} {% endblock %}
 
 {% block content %}
+<h2>All applications for <a href="/user/profile?id={{user.id}}"> {{user.name}} </a> </h2>
 {% if applications %}
 <table class="data-tables">
     <thead>
@@ -16,8 +17,8 @@
     </thead>
     {% for app in applications %}
     <tr>
-        <td> {{app.job.title}} </td>
-        <td> {{app.job.company.name}} </td>
+        <td> <a href="/jobs/applications?id={{app.job.id}}"> {{app.job.title}} </a> </td>
+        <td> <a href="/employer/profile?id={{app.job.company.id}}"> {{app.job.company.name}} </a> </td>
         <td> {{app.job.description}} </td>
         <td> {{app.status}} </td>
     </tr>

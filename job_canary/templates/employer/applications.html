@@ -1,1 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} Applications - {{company.name}} {% endblock %}
+
+{% block content %}
+<h2>Applications at {{company.name}}</h2>
+{% if applications %}
+<table class="data-tables">
+    <thead>
+    <tr>
+        <th>Job Title</th>
+        <th>Description</th>
+        <th>Applicant</th>
+    </tr>
+    </thead>
+    {% for app in applications %}
+    <tr>
+        <td> <a href="/jobs/applications?id={{app.job.id}}"> {{app.job.title}} </a> </td>
+        <td> {{app.job.description}} </td>
+        <td> <a href="/user/profile?id={{app.candidate.id}}"> {{app.candidate.name}} </a> </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<div class="container">
+    No active applications
+</div>
+{% endif %}
+{% endblock %}
+
 

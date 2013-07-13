@@ -5,7 +5,8 @@
 {% block content %}
 <h2>Applications for {{job.title}} at <a href="/employer/profile?id={{job.company.id}}">{{job.company}} </a></h2>
 {% if applications %}
-<table>
+<table class="data-tables">
+    <thead>
     <tr>
         <th>Applicant</th>
         <th>Description</th>

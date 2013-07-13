@@ -13,7 +13,6 @@ class EmployerRegisterForm(forms.Form):
 
 class ApplicationForm(forms.Form):
     description = forms.CharField(max_length=5000)
-    name = forms.CharField(max_length=5000)
     
 class JobForm(forms.Form):
     description = forms.CharField(max_length=5000)

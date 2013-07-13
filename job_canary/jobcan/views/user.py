@@ -6,10 +6,7 @@ def getUser(request):
     return get_object_or_404(Candidate, pk=request.GET['id'])
 
 def profile(request):
-    context = {}
-    try:
-        context["user"] = getUser(request)
-    except:raise
+    context = {'user' : getUser(request)}
     return render(request, 'user/profile.html', context)
 
 def jobs(request):
@@ -17,15 +14,12 @@ def jobs(request):
     try:
         user = getUser(request)
         context['user'] = user
-        jobs = get_list_or_404(Application, candidate=user)
-        context['jobs'] = jobs
+        apps = get_list_or_404(Application, candidate=user)
+        context['applications'] = apps
         print jobs
-    except:raise
+    except:pass
     return render(request, "user/jobs.html", context)
 
 def upload(request):
-    context = {}
-    try:
-        context['user'] = getUser(request)
-    except:raise
+    context = {'user' : getUser(request)}
     return render(request, 'user/upload.html', context)

@@ -19,3 +19,14 @@ def jobs(request):
     except:pass
     print jobs
     return render(request, "employer/jobs.html", context)
+"""
+def applications(request):
+    context = {}
+    company = getCompany(request)
+    context['company'] = company
+    try:
+        applications = get_list_or_404(Application, job.company=company)
+        context['applications'] = applications
+    except:pass
+    print applications
+    return render(request, "employer/applications.html", context)"""

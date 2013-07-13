@@ -43,4 +43,4 @@ class Application(models.Model):
   candidate = models.ForeignKey(Candidate)
   status = models.CharField(max_length=20)
   def __str__(self):
-     return "{1} - {0} ({2})".format(self.name, self.candidate, self.status)
+     return "{1} - {0} ({2})".format(self.job, self.candidate, self.status)

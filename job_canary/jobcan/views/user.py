@@ -69,7 +69,7 @@ def application(request):
 	context['form'] = form
 	context['user'] = user
 	context['job'] = job
-	return render(request, 'user/profile.html', context)
+	return render(request, 'user/application.html', context)
 
 def upload(request):
     context = {'user' : getUser(request)}

@@ -37,8 +37,7 @@ class Candidate(models.Model):
         return self.name
 
 class Application(models.Model):
-  description = models.CharField(max_length=1000)
-  name = models.CharField(max_length=30)
+  description = models.CharField(max_length=1000, blank=True, null=True)
   resume  = models.FileField(upload_to=content_file_name)
   job = models.ForeignKey(Job)
   candidate = models.ForeignKey(Candidate)

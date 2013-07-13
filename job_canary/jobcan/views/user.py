@@ -11,13 +11,13 @@ def profile(request):
 
 def jobs(request):
     context = {}
+    user = getUser(request)
+    context['user'] = user
     try:
-        user = getUser(request)
-        context['user'] = user
         apps = get_list_or_404(Application, candidate=user)
         context['applications'] = apps
-        print jobs
     except:pass
+    print jobs
     return render(request, "user/jobs.html", context)
 
 def upload(request):

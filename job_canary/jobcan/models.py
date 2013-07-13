@@ -12,6 +12,8 @@ class Cycle(models.Model):
   description = models.CharField(max_length=1000)
   start_date = models.DateTimeField('start_date')
   end_date = models.DateTimeField('end_date')
+  def __str__(self):
+    return "{0} [{1} - {2}]".format(self.name, self.start_date, self.end_date)
   
 class Job(models.Model):
   cycle = models.ForeignKey(Cycle, blank=True, null=True)
@@ -25,7 +27,9 @@ class Candidate(models.Model):
   resume  = models.FileField(upload_to=content_file_name, blank=True, null=True)
   linkedindata = models.CharField(max_length=5000)
   company = models.ForeignKey(Company, blank=True, null=True)
-  
+  def __str__(self):
+        return self.name
+
 class Application(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
@@ -33,3 +37,5 @@ class Application(models.Model):
   job = models.ForeignKey(Job)
   candidate = models.ForeignKey(Candidate)
   status = models.CharField(max_length=20)
+  def __str__(self):
+     return "{1} - {0} ({2})".format(self.name, self.candidate, self.status)

@@ -4,4 +4,23 @@
 {% block content %}
         <h2>{{user.name}}</h2>
         <p>{{user.description}}</h2>
+        {% if cycles %}
+        <h3>Cycles</h3>
+        <table>
+            <tr>
+                <td> Cycle </td>
+                <td> Description </td>
+                <td> Start </td>
+                <td> End </td>
+        {% for cycle in cycles %}
+            <tr>
+                <td>{{cycle.name}} </td>
+                <td>{{cycle.description}}</td>
+                <td>{{cycle.start_date}}</td>
+                <td>{{cycle.end_date}}</td>
+            </tr>
+        {% endfor%}
+        </table>
+        {% endif %}
+
 {% endblock %}

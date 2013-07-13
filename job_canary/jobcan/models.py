@@ -23,6 +23,7 @@ class Candidate(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
   resume  = models.FileField(upload_to=content_file_name, blank=True, null=True)
+  linkedindata = models.CharField(max_length=5000)
   
 class Application(models.Model):
   description = models.CharField(max_length=1000)

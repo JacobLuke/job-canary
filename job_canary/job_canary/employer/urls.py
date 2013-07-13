@@ -1,3 +1,3 @@
 from django.conf.urls import patterns, url, include
 
-urlpatterns = pattern("")
+urlpatterns = patterns("")

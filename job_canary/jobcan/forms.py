@@ -35,6 +35,7 @@ class JobForm(forms.Form):
 
 class CycleRegistration(forms.Form):
     name = forms.CharField(max_length=500)
-    start_date = forms.SplitDateTimeField()
-    end_date = forms.SplitDateTimeField()
+    description=forms.CharField(max_length=500)
+    start_date = forms.DateTimeField()
+    end_date = forms.DateTimeField()
     candidates = forms.ModelMultipleChoiceField(queryset=jobcan.models.Candidate.objects)

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
-from jobcan.models import Owner
+from jobcan.models import Owner, Cycle
 from jobcan.forms import OwnerRegisterForm, CycleRegistration
 
 def getOwner(request):
@@ -29,20 +29,26 @@ def register(request):
 	return render(request, 'owner/register.html', context)
 
 def create(request):
+	owner = getOwner(request)
 	print request
 	context = {}
 	if request.method == 'POST':
 		form = CycleRegistration(request.POST, request.FILES)
 		print form
 		if form.is_valid():
-			owner = Owner(name=request.POST['name'],
-                          email_address=request.POST['email_address']
-                          )
-			owner.save()
+			cycle = Cycle(
+				owner = owner,
+				name=request.POST['name'],
+				description=request.POST['description'],
+				start_date=request.POST['start_date'],
+				end_date=request.POST['end_date']
+			)
+			cycle.save()
 			return HttpResponseRedirect('/owner/profile?id=%d' % owner.id)
 	else:
 		form = CycleRegistration()
 	context['form'] = form
+	context['owner'] = owner
 	return render(request, 'owner/create.html', context)
 
 

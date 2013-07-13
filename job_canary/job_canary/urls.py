@@ -12,5 +12,3 @@ urlpatterns = patterns('',
         url(r'^user/', include(user.urls)),
 		url(r'^admin/', include(admin.site.urls)),
 )
-urlpatterns += patterns('django.contrib.staticfiles.views',
-                        url(r'^static/(?P<path>.*)$', 'serve'))

@@ -1,4 +1,3 @@
-import os
 # Django settings for job_canary project.
 
 DEBUG = True
@@ -70,7 +69,9 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    ('bootstrap', os.environ['JOBCANARY_ROOT'] + '/templates/bootstrap'),
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
 )
 
 # List of finder classes that know how to find static files in
@@ -107,7 +108,9 @@ ROOT_URLCONF = 'job_canary.urls'
 WSGI_APPLICATION = 'job_canary.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.environ['JOBCANARY_ROOT'] + "/templates",
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
 )
 
 INSTALLED_APPS = (

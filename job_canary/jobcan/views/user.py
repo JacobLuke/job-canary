@@ -14,7 +14,14 @@ def getJob(request):
 	return get_object_or_404(Job, pk=request.GET['jobid'])
 
 def profile(request):
-    context = {'user' : getUser(request)}
+    context = {}
+    user = getUser(request)
+    context['user'] = user
+    try:
+        apps = get_list_or_404(Application, candidate=user)
+        context['applications'] = apps
+    except:pass
+
     return render(request, 'user/profile.html', context)
 
 def jobs(request):

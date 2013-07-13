@@ -1,33 +1,80 @@
-
 {% extends "base.html" %}
 {% block title %} {{user.name}} {% endblock %}
 {% block content %}
-        <h2>{{user.name}}</h2>
-        <p>{{user.description}}</h2>
-        {% if cycles %}
-        <h3>Cycles</h3>
-        <table class="data-tables">
-            <thead>
+
+<p><img src="http://critterapp.pagodabox.com/img/user.jpg" width="160" height="160"/></p>
+<h1>{{user.name}}</h1>
+<h3>Intern at {{user.company}}</h3>
+
+<br>
+<div class="row">
+    <div class="span6">
+        <table class="table table-striped">
             <tr>
-                <th> Cycle </th>
-                <th> Description </th>
-                <th> Start </th>
-                <th> End </th>
+                <td><h6>Office Phone:</h6></td>
+                <td><i class="icon-home"></i> 888-888-8888</td>
             </tr>
-            </thead>
-            <tbody>
-        {% for cycle in cycles %}
             <tr>
-                <td>{{cycle.name}} </td>
-                <td>{{cycle.description}}</td>
-                <td>{{cycle.start_date}}</td>
-                <td>{{cycle.end_date}}</td>
+                <td><h6>Cell Phone:</h6></td>
+                <td><i class="icon-headphones"></i> 18-18-18-18</td>
             </tr>
-        {% endfor%}
-            </tbody>
+            <tr>
+                <td><h6>Email:</h6></td>
+                <td><i class="icon-envelope"></i> <a href="mailto:{{user.email_addr}}">{{user.email_addr}}</a></td>
+            </tr>
+            <tr>
+                <td><h6>Twitter:</h6></td>
+                <td><i class="icon-retweet"></i> <a href=""> @Candidate </a></td>
+            </tr>
         </table>
-        {% endif %}
 
-        <a href="/user/jobs?id={{user.id}}"> All my Applications </a>
+        <div class="alert alert-warning">
+          <h4 class="alert-heading">Warning</h4>
+          The phone numbers, email addresses, and Twitter handlers are fake.
+        </div>
+    </div>
+<div id="details" class="span7"></div>
+    <div class="span5">
+        <div id="reports" class="well">
+            <h3 class="modal-header">Job Applications</h3>
+            
+{% if applications %}
+<table class="data-tables">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Description</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    {% for app in applications %}
+    <tr>
+        <td> <a href="/jobs/applications?id={{app.job.id}}"> {{app.job.title}} </a> </td>
+        <td> <a href="/employer/profile?id={{app.job.company.id}}"> {{app.job.company.name}} </a> </td>
+        <td> {{app.job.description}} </td>
+        <td> {{app.status}} </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<div class="alert alert-info no-reports">
+              <h4 class="alert-heading">Info</h4>
+              {{user.name}} has no job applications
+            </div>
+{% endif %}
+        </div>
+    </div>
+</div>
 
+
+
+
+        <div>
+	<hr>
+	<footer>
+                <p>&copy; Company 2013</p>
+            </footer>
+</div>
+        <script src="{{STATIC_URL}}booststrap/js/bootstrap.min.js"></script>
 {% endblock %}

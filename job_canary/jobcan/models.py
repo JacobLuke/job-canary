@@ -6,19 +6,28 @@ def content_file_name(instance, filename):
 class Company(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
+<<<<<<< HEAD
   email_addr = models.CharField(max_length=100)
+=======
+  def __str__ (self):
+    return self.name
+>>>>>>> a93e6df89e0dbeaa980d5367484e4d702acfec9b
 
 class Cycle(models.Model):
   name = models.CharField(max_length=200)
   description = models.CharField(max_length=1000)
   start_date = models.DateTimeField('start_date')
   end_date = models.DateTimeField('end_date')
+  def __str__(self):
+    return "{0} [{1} - {2}]".format(self.name, self.start_date, self.end_date)
   
 class Job(models.Model):
   cycle = models.ForeignKey(Cycle, blank=True, null=True)
   company = models.ForeignKey(Company)
   title = models.CharField(max_length=300)
   description = models.CharField(max_length=1000)
+  def __str__ (self):
+    return "\"{0}\" at {1} ({2})".format(self.title, self.company, self.cycle)
 
 class Candidate(models.Model):
   description = models.CharField(max_length=1000)
@@ -26,8 +35,14 @@ class Candidate(models.Model):
   resume  = models.FileField(upload_to=content_file_name, blank=True, null=True)
   linkedindata = models.CharField(max_length=5000, blank=True, null=True)
   company = models.ForeignKey(Company, blank=True, null=True)
+<<<<<<< HEAD
   email_addr = models.CharField(max_length=100)
   
+=======
+  def __str__(self):
+        return self.name
+
+>>>>>>> a93e6df89e0dbeaa980d5367484e4d702acfec9b
 class Application(models.Model):
   description = models.CharField(max_length=1000)
   name = models.CharField(max_length=30)
@@ -35,3 +50,5 @@ class Application(models.Model):
   job = models.ForeignKey(Job)
   candidate = models.ForeignKey(Candidate)
   status = models.CharField(max_length=20)
+  def __str__(self):
+     return "{1} - {0} ({2})".format(self.name, self.candidate, self.status)

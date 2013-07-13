@@ -4,6 +4,7 @@ admin.autodiscover()
 from django.conf import settings
 import user.urls
 from django.conf.urls.static import static
+import employer.urls
 
 urlpatterns = patterns('',
     # Examples:
@@ -14,3 +15,5 @@ urlpatterns = patterns('',
         url(r'^user/', include(user.urls)),
 		url(r'^admin/', include(admin.site.urls)),
 ) 
+	url(r'^employer/', include(employer.urls)),
+)

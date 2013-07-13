@@ -71,6 +71,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     ('bootstrap', os.environ['JOBCANARY_ROOT'] + '/templates/bootstrap'),
+    ('common', os.environ['JOBCANARY_ROOT'] + '/templates/common'),
 )
 
 # List of finder classes that know how to find static files in
@@ -107,7 +108,8 @@ ROOT_URLCONF = 'job_canary.urls'
 WSGI_APPLICATION = 'job_canary.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.environ['JOBCANARY_ROOT'] + "/templates",
+                 os.environ['JOBCANARY_ROOT'] + "/templates",
+                 os.environ['JOBCANARY_ROOT'] + "/templates/common",
 )
 
 INSTALLED_APPS = (

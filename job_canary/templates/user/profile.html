@@ -6,12 +6,16 @@
         <p>{{user.description}}</h2>
         {% if cycles %}
         <h3>Cycles</h3>
-        <table>
+        <table class="data-tables">
+            <thead>
             <tr>
-                <td> Cycle </td>
-                <td> Description </td>
-                <td> Start </td>
-                <td> End </td>
+                <th> Cycle </th>
+                <th> Description </th>
+                <th> Start </th>
+                <th> End </th>
+            </tr>
+            </thead>
+            <tbody>
         {% for cycle in cycles %}
             <tr>
                 <td>{{cycle.name}} </td>
@@ -20,6 +24,7 @@
                 <td>{{cycle.end_date}}</td>
             </tr>
         {% endfor%}
+            </tbody>
         </table>
         {% endif %}
 

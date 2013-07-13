@@ -29,8 +29,13 @@
             </div>
         </div>
         
-        <div class="container">
+        <div class="container-fluid">
             {% block content %}{% endblock %}
         </div>
+        <script src="http://datatables.net/download/build/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){$(".data-tables").dataTable();});
+        </script>
+    
     </body>
 </html>

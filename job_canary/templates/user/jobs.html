@@ -6,16 +6,17 @@
 {% block content %}
 {% if applications %}
 <table>
-    <th>
-        <td> Title </td>
-        <td> Company </td>
-        <td>Description </td>
-        <td>Status</td>
+    <tr>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Description</th>
+        <th>Status</th>
     {% for app in applications %}
+    </tr>
     <tr>
         <td> {{app.name}} </td>
         <td> {{app.job.company.name}} </td>
-        <td> {{app.description </td>
+        <td> {{app.description}} </td>
         <td> {{app.status}} </td>
     </tr>
     {% endfor %}

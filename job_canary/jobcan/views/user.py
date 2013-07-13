@@ -1,12 +1,14 @@
 
-from djagno.shortcuts import get_object_or_404, render
-from job_canary.models import Candidate
+from django.shortcuts import get_object_or_404, render
+from jobcan.models import Candidate
+import os
 
 def profile(request):
     context = {}
     try:
-        id = request.POST['id']
+        id = request.GET['id']
         user = get_object_or_404(Candidate, pk=id)
         context["user"] = user
-    except:pass
-    return render(request, '../../templates/user/profile.html', context)
+    except:raise
+    open(os.environ['JOBCANARY_ROOT'] + '/templates/user/profile.html')
+    return render(request,'user/profile.html', context)
